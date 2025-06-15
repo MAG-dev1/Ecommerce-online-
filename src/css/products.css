@@ -3,8 +3,9 @@
   margin: 2rem auto;
   padding: 0 1rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
+  
 }
 
 h2 {
@@ -28,6 +29,7 @@ h2 {
   align-items: center;
   align-content: center;
   transition: 0.3s;
+   border: 2px solid black;
 }
 
 .card:hover {
@@ -35,18 +37,18 @@ h2 {
 }
 
 .card img {
-  object-fit: contain;
+
   width: 100px;
   height: 100px;
   max-height: 200px;
   margin-bottom: 1rem;
- 
-
+  border: 2px solid black;
+   border-radius: 10px;
 }
 
 .card h3{
   font-size: medium;
-  min-height: 40px; /* ajustá según tu diseño */
+  min-height: 70px; /* ajustá según tu diseño */
   overflow: hidden;
 }
 
@@ -76,6 +78,7 @@ h2 {
   align-items: center;
   text-decoration: none;
   margin: 1%;
+  border: 2px solid black;
 }
 
 button:hover, .btn:hover {
@@ -94,3 +97,4 @@ ul li {
   border-radius: 5px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
+

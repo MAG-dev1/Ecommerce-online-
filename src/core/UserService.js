@@ -11,7 +11,7 @@ export class UserService {
             return UserService.instance;
         }
         this.userRepository = [];
-        UserService.instance = this;
+        UserService.instance = this; //singleton
     }
 
     createClient(username, password) {
@@ -45,6 +45,10 @@ export class UserService {
             throw new Error("La contraseña es incorrecta");
         }
         return user;
+    }
+
+    get(username){
+        return this.userRepository.find(u => u.username === username);
     }
 
     validateUser(username, password){

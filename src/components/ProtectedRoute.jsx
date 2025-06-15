@@ -1,5 +1,6 @@
 import { Navigate } from 'react-router-dom';
 
+
 function ProtectedRoute({ children }) {
   const loggedIn = !!localStorage.getItem('user');
   return loggedIn ? children : <Navigate to="/login" />;

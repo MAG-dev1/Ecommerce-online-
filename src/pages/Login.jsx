@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../css/login.css'
 import { UserService } from '../core/UserService.js';
 import { useContext } from 'react';
-import { UserContext } from '../UserContext.jsx';
+import { UserContext } from '../context/UserContext.jsx';
 
 
 function Login() {
@@ -17,7 +17,7 @@ function Login() {
     e.preventDefault();
    
     if (servicio.autenticar(email, password)) {
-      localStorage.setItem('user', 'true'); //simulo que autentico un user
+      localStorage.setItem('user', JSON.stringify(servicio.get(email))); //simulo que autentico un user
       setUser({username: email, password: password});
       navigate('/home');
     } 

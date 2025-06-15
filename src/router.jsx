@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import ProtectedPage from './pages/ProtectedPage';
+import ShoppingCart from './pages/ShoppingCart';
 import App from './App';
 
 const router = createBrowserRouter([
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
       { path: '/home', element: <Home /> },
       { path: '/product/:id', element: <ProductDetail /> },
       { path: '/login', element: <Login /> },
-      { path: '/protected', element: <ProtectedPage /> },
+      { path: '/ShoppingCart', element: <ShoppingCart /> },
       { path: '/registro', element: <Register /> }
     ]
   }

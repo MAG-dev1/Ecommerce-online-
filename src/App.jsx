@@ -3,16 +3,17 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
 import Login from './pages/Login';
-import ProtectedPage from './pages/ProtectedPage';
+import ShoppingCart from './pages/ShoppingCart';
 import './css/app.css'
 import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
-import { UserProvider } from './UserContext';
-
+import { UserProvider } from './context/UserContext';
+import { CarritoProvider } from './context/CarritoContext';
 function App() {
   return (
     <>
     <UserProvider>
+      <CarritoProvider>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Register/>}/>
@@ -22,10 +23,16 @@ function App() {
             </ProtectedRoute>
           } />
         
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/protected" element={<ProtectedPage />} />
+       
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/ShoppingCart" element={<ShoppingCart />} />
+       
+       
         <Route path="*" element={<Login />} />
+        
       </Routes>
+
+      </CarritoProvider>
     </UserProvider>
       
     </>

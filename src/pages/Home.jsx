@@ -2,16 +2,18 @@ import ProductList from '../components/ProductList';
 import Cart from '../components/Cart';
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
-import { UserContext } from '../UserContext.jsx';
+import { UserContext } from '../context/UserContext.jsx';
 import { useContext } from 'react';
+import { useCarrito } from '../context/CarritoContext.jsx';
 
 function Home() {
-  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+  const {carrito, agregarProducto, vaciarCarrito} = useCarrito(); 
   const { user } = useContext(UserContext);
 
   const handleAddToCart = (product) => {
-    setCart([...cart, product]);
-    console.log(user.username);
+    agregarProducto(product);
+    console.log(carrito);
   };
 
   return (
@@ -19,7 +21,6 @@ function Home() {
     <div>
       <Navbar props = {user}/>
       <ProductList onAdd={handleAddToCart} />
-      <Cart items={cart} />
     </div>
   );
 }
