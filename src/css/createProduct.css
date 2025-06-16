@@ -18,10 +18,15 @@ h2{
     width: 25%;
 }
 
+.form input, textarea{
+    border: 2px solid black;
+}
+
 .form button{
    margin-top: 5%;
    text-align: center;
    display: flex;
    justify-content: center;
+     border: 2px solid black;
 }
 

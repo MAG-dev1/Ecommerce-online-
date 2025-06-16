@@ -1,0 +1,25 @@
+.form_delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_delete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    padding: 5%;
+    background-color: #222;
+    margin: 5%;
+    border-radius: 5%;
+}
+
+.container_delete *{
+    margin: 5%;
+}
+
+.container_delete button, input{
+    border: 2px solid black;
+}
