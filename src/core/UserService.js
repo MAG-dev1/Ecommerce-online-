@@ -36,7 +36,6 @@ export class UserService {
         let user = this.userRepository.find(u => u.username === username);
         for (let index = 0; index < this.userRepository.length; index++) {
             const element = this.userRepository[index];
-            console.log(element);
         }
         if(!user){
             throw new Error("No existe el usuario");
@@ -47,7 +46,7 @@ export class UserService {
         return user;
     }
 
-    get(username){
+    find(username){
         return this.userRepository.find(u => u.username === username);
     }
 

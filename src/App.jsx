@@ -9,6 +9,9 @@ import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserProvider } from './context/UserContext';
 import { CarritoProvider } from './context/CarritoContext';
+import ProductManagment from './pages/admin/ProductManagment';
+import ProductCreate from './pages/admin/ProductCreate';
+import ProductDelete from './pages/admin/ProductDelete';
 function App() {
   return (
     <>
@@ -26,7 +29,21 @@ function App() {
        
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/ShoppingCart" element={<ShoppingCart />} />
-       
+        <Route path="/managment" element={
+            <ProtectedRoute>
+              <ProductManagment/>
+            </ProtectedRoute>
+          } />
+         <Route path="/create" element={
+            <ProtectedRoute>
+              <ProductCreate/>
+            </ProtectedRoute>
+          } />
+           <Route path="/delete" element={
+            <ProtectedRoute>
+              <ProductDelete/>
+            </ProtectedRoute>
+          } />
        
         <Route path="*" element={<Login />} />
         

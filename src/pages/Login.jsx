@@ -17,8 +17,8 @@ function Login() {
     e.preventDefault();
    
     if (servicio.autenticar(email, password)) {
-      localStorage.setItem('user', JSON.stringify(servicio.get(email))); //simulo que autentico un user
-      setUser({username: email, password: password});
+      localStorage.setItem('user', JSON.stringify(servicio.find(email))); //simulo que autentico un user
+      setUser(servicio.find(email));
       navigate('/home');
     } 
     else{

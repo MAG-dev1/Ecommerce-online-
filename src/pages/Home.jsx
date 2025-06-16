@@ -9,7 +9,6 @@ import { useCarrito } from '../context/CarritoContext.jsx';
 function Home() {
   const [products, setProducts] = useState([]);
   const {carrito, agregarProducto, vaciarCarrito} = useCarrito(); 
-  const { user } = useContext(UserContext);
 
   const handleAddToCart = (product) => {
     agregarProducto(product);
@@ -19,7 +18,7 @@ function Home() {
   return (
     
     <div>
-      <Navbar props = {user}/>
+      <Navbar/>
       <ProductList onAdd={handleAddToCart} />
     </div>
   );
