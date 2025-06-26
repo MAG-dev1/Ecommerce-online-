@@ -9,49 +9,59 @@ import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserProvider } from './context/UserContext';
 import { CarritoProvider } from './context/CarritoContext';
+import { ProductProvider } from './context/ProductContext';
+
 import ProductManagment from './pages/admin/ProductManagment';
 import ProductCreate from './pages/admin/ProductCreate';
 import ProductDelete from './pages/admin/ProductDelete';
+import ProductEdit from './pages/admin/ProductEdit';
 function App() {
   return (
     <>
-    <UserProvider>
-      <CarritoProvider>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Register/>}/>
-        <Route path="/home" element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          } />
-        
-       
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/ShoppingCart" element={<ShoppingCart />} />
-        <Route path="/managment" element={
-            <ProtectedRoute>
-              <ProductManagment/>
-            </ProtectedRoute>
-          } />
-         <Route path="/create" element={
-            <ProtectedRoute>
-              <ProductCreate/>
-            </ProtectedRoute>
-          } />
-           <Route path="/delete" element={
-            <ProtectedRoute>
-              <ProductDelete/>
-            </ProtectedRoute>
-          } />
-       
-        <Route path="*" element={<Login />} />
-        
-      </Routes>
+      <UserProvider>
+        <CarritoProvider>
+          <ProductProvider>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/registro" element={<Register />} />
+              <Route path="/home" element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              } />
 
-      </CarritoProvider>
-    </UserProvider>
-      
+
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/ShoppingCart" element={<ShoppingCart />} />
+              <Route path="/managment" element={
+                <ProtectedRoute>
+                  <ProductManagment />
+                </ProtectedRoute>
+              } />
+              <Route path="/create" element={
+                <ProtectedRoute>
+                  <ProductCreate />
+                </ProtectedRoute>
+              } />
+              <Route path="/delete" element={
+                <ProtectedRoute>
+                  <ProductDelete />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/edit" element={
+                <ProtectedRoute>
+                  <ProductEdit />
+                </ProtectedRoute>
+              } />
+
+              <Route path="*" element={<Login />} />
+
+            </Routes>
+          </ProductProvider>
+        </CarritoProvider>
+      </UserProvider>
+
     </>
   );
 }

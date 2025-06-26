@@ -10,9 +10,9 @@ export class ProductService {
         ProductService.instance = this;
     }
 
-    post(nombre, precio, titulo, image, description){
+    post(product){
 
-        let product = new Product(nombre, precio, titulo, image, description);
+      
         fetch('https://684f3618f0c9c9848d2a639d.mockapi.io/Store',{
             method: 'POST',
             headers:{
@@ -35,6 +35,24 @@ export class ProductService {
              headers:{
                 'Content-Type': 'application/json',
             },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err =>{
+            console.error(err);
+        });
+    }
+
+    put(id, product){
+
+        fetch(`https://684f3618f0c9c9848d2a639d.mockapi.io/Store/${id}` ,{
+            method: 'PUT',
+             headers:{
+                'Content-Type': 'application/json',
+            },
+            body: product
         })
         .then(response => response.json())
         .then(data => {

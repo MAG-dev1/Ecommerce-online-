@@ -9,7 +9,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const [admin, setAdmin] = useState('');
     const navigate = useNavigate();
-    const servicio = new UserService();
+    const servicio = UserService.getInstance();
 
     const registrarse = (e) => {
         e.preventDefault();

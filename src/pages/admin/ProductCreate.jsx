@@ -2,9 +2,10 @@ import { useState } from "react";
 import Navbar  from "../../components/Navbar";
 import '../../css/createProduct.css';
 import { ProductService } from '../../core/ProductService'
+import { Product } from "../../core/Product";
 
 export default function ProductCreate() {
-    const [nombre, setNombre] = useState('');
+  const [seller, setSeller] = useState('');
   const [precio, setPrecio] = useState('');
   const [titulo, setTitulo] = useState('');
   const [imagen, setImagen] = useState('');
@@ -13,7 +14,8 @@ export default function ProductCreate() {
 
     const createProductHandle = (e) =>{
         e.preventDefault();
-        service.post(nombre, precio, titulo, imagen, descripcion);
+        let product = new Product(seller, precio, titulo, imagen, descripcion);
+        service.post(product);
     }
 
   return (
@@ -22,11 +24,11 @@ export default function ProductCreate() {
       <h2>Crear producto</h2>
       <form className="form">
         <div>
-        <label>Nombre:</label>
+        <label>Vendedor:</label>
         <input
           type="text"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
+          value={seller}
+          onChange={(e) => setSeller(e.target.value)}
           required
         />
 

@@ -5,13 +5,19 @@ import { User } from './User.js';
 export class UserService {
     
     userRepository;
-    static instance;
-    constructor() {
-        if (UserService.instance) {
-            return UserService.instance;
-        }
+    static #instance;
+    constructor(){
+        if(UserService.#instance)
+            throw new Error("Ya existe el servicio");
+        UserService.#instance = this;    
         this.userRepository = [];
-        UserService.instance = this; //singleton
+    }
+
+    static getInstance(){
+       if (!UserService.#instance) {
+            new UserService();
+        }
+        return UserService.#instance;
     }
 
     createClient(username, password) {

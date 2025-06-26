@@ -10,7 +10,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const servicio = new UserService();
+  const servicio = UserService.getInstance();
   const { setUser } = useContext(UserContext);
 
   const loguearse = (e) => {
