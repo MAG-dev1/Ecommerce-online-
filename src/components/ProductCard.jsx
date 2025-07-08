@@ -13,10 +13,10 @@ function ProductCard({ product, onAdd }) {
         <p>${product.price}</p>
 
         {!user.admin && 
-          <button onClick={() => onAdd(product)} className="btn">Agregar al carrito</button>
+          <button onClick={() => onAdd(product)} className="boton">Agregar al carrito</button>
         }
         
-        <Link to={`/product/${product.id}`} className="btn">Ver detalle</Link>
+        <Link to={`/product/${product.id}`} className="boton">Ver detalle</Link>
       </div>
      
     

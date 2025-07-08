@@ -25,7 +25,7 @@ function ShoppingCart() {
             <div key={i} className='product_cart_individual'>
               <img src={p.image} alt={p.title}/>
               <h2>{p.title}</h2>
-              <p>{p.price}$</p>
+              <p>{parseInt(p.price * p.count)}$</p>
               <p>Cantidad:{p.count} Articulo/s</p>
             </div>
           ))}

@@ -1,18 +1,20 @@
 export class Product {
+
     #seller;
     #price;
     #title;
     #image;
     #description;
 
-    constructor(seller, price, titulo, image, description) {
+    constructor(id, seller, price, titulo, image, description) {
 
         this.validate(seller, price, titulo, image, description); //validar IREP
-        this.seller = seller;
-        this.price = price;
-        this.title = titulo;
-        this.image = image;
-        this.description = description;
+     
+        this.#seller = seller;
+        this.#price = price;
+        this.#title = titulo;
+        this.#image = image;
+        this.#description = description;
     }
 
     validate(seller, price, titulo, image, description) {
@@ -38,6 +40,9 @@ export class Product {
         }
     }
 
+    title(){
+        return this.#title;
+    }
 
 
 }

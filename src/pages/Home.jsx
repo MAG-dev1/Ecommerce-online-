@@ -9,6 +9,7 @@ import { useCarrito } from '../context/CarritoContext.jsx';
 function Home() {
   const [products, setProducts] = useState([]);
   const {carrito, agregarProducto, vaciarCarrito} = useCarrito(); 
+  const [search, setSearch] = useState('');
 
   const handleAddToCart = (product) => {
     agregarProducto(product);
@@ -18,8 +19,8 @@ function Home() {
   return (
     
     <div>
-      <Navbar/>
-      <ProductList onAdd={handleAddToCart} />
+      <Navbar search={search} setSearch={setSearch}/>
+      <ProductList search={search}  onAdd={handleAddToCart} />
     </div>
   );
 }
