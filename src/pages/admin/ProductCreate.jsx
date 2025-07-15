@@ -3,6 +3,11 @@ import Navbar  from "../../components/Navbar";
 import '../../css/createProduct.css';
 import { ProductService } from '../../core/ProductService'
 import { Product } from "../../core/Product";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { ButtonForm } from '../../styledComponents/StyledComponents.js';
+
 
 export default function ProductCreate() {
   const [seller, setSeller] = useState('');
@@ -14,8 +19,15 @@ export default function ProductCreate() {
 
     const createProductHandle = (e) =>{
         e.preventDefault();
-        let product = new Product(seller, precio, titulo, imagen, descripcion);
-        service.post(product);
+        try {
+            let product = new Product(seller, precio, titulo, imagen, descripcion);
+            service.post(product);
+        } catch (error) {
+            toast.error('Error al crear el producto: ' + error.message);
+            return;
+          
+        }
+     
     }
 
   return (
@@ -30,6 +42,7 @@ export default function ProductCreate() {
           value={seller}
           onChange={(e) => setSeller(e.target.value)}
           required
+          placeholder="Nombre del vendedor"
         />
 
         <label>Precio:</label>
@@ -38,6 +51,7 @@ export default function ProductCreate() {
           value={precio}
           onChange={(e) => setPrecio(e.target.value)}
           required
+          placeholder="Precio del producto"
         />
 
         <label>Título:</label>
@@ -46,6 +60,7 @@ export default function ProductCreate() {
           value={titulo}
           onChange={(e) => setTitulo(e.target.value)}
           required
+          placeholder="Título del producto"
         />
 
         <label>Imagen (URL):</label>
@@ -54,6 +69,7 @@ export default function ProductCreate() {
           value={imagen}
           onChange={(e) => setImagen(e.target.value)}
           required
+          placeholder="URL de la imagen"
         />
 
         <label>Descripción:</label>
@@ -61,11 +77,16 @@ export default function ProductCreate() {
           value={descripcion}
           onChange={(e) => setDescripcion(e.target.value)}
           required
+          placeholder="Descripción del producto"
+          rows="4"
         />
 
-        <button onClick={createProductHandle}><p>Submit</p></button>
+        <ButtonForm onClick={createProductHandle}>Crear Producto</ButtonForm>
         </div>
+     
       </form>
+      <ToastContainer position="bottom-right" />
+    
     </>
   );
 }

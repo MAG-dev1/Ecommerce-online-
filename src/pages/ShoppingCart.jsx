@@ -15,23 +15,25 @@ function ShoppingCart() {
   useEffect(() => {
 
   }, []);
-  console.log(carrito);
+  if (!user) return <Navigate to="/login" />;
   return (
     <div>
         <Navbar props={user}/>
         <h2>Tus productos</h2>
         <div className='products_cart'>
           {carrito.map((p, i) => (
-            <div key={i} className='product_cart_individual'>
+            <div key={i} className='col-12 col-sm-6 col-md-4 product_cart_individual mb-4'>
               <img src={p.image} alt={p.title}/>
               <h2>{p.title}</h2>
               <p>{parseInt(p.price * p.count)}$</p>
               <p>Cantidad:{p.count} Articulo/s</p>
             </div>
           ))}
-          
+        {carrito.length > 0 && <button>Comprar</button>}
         </div>
+       
     </div>
+   
     
 );
 }

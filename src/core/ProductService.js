@@ -2,65 +2,63 @@ import { Product } from './Product';
 
 export class ProductService {
 
-   static instance;
-    constructor(){
+    static instance;
+    constructor() {
         if (ProductService.instance) {
             return ProductService.instance;
         }
         ProductService.instance = this;
     }
 
-    post(product){
+    post(product) {
 
-      
-        fetch('https://684f3618f0c9c9848d2a639d.mockapi.io/Store',{
+
+        fetch('https://684f3618f0c9c9848d2a639d.mockapi.io/Store', {
             method: 'POST',
-            headers:{
+            headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(product),
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-        .catch(err =>{
-            console.error(err);
-        });
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => {
+                console.error(err);
+            });
     }
-
-    delete(id){
-        fetch(`https://684f3618f0c9c9848d2a639d.mockapi.io/Store/${id}` ,{
+    delete(id) {
+        fetch(`https://684f3618f0c9c9848d2a639d.mockapi.io/Store/${id}`, {
             method: 'DELETE',
-             headers:{
+            headers: {
                 'Content-Type': 'application/json',
             },
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-        .catch(err =>{
-            console.error(err);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+                return response.json();
+            });
     }
 
-    put(id, product){
+    put(id, product) {
 
-        fetch(`https://684f3618f0c9c9848d2a639d.mockapi.io/Store/${id}` ,{
+        fetch(`https://684f3618f0c9c9848d2a639d.mockapi.io/Store/${id}`, {
             method: 'PUT',
-             headers:{
+            headers: {
                 'Content-Type': 'application/json',
             },
             body: product
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-        .catch(err =>{
-            console.error(err);
-        });
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => {
+                console.error(err);
+            });
     }
 
 }

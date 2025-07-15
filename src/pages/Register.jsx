@@ -16,6 +16,14 @@ function Login() {
 
     const registrarse = (e) => {
         e.preventDefault();
+
+            const form = e.target;
+  if (!form.checkValidity()) {
+    // Forzá que el navegador muestre los errores
+    form.reportValidity();
+    return;
+  }
+
         try {
             if (admin === 'Admin') {
                 servicio.createAdmin(email, password);
@@ -31,7 +39,8 @@ function Login() {
     }
     return (
         <div className='container'>
-            <form>
+            <form onSubmit={registrarse}>
+
                 <div className='campo'>
                     <Label>Email:</Label>
                     <input
@@ -54,7 +63,8 @@ function Login() {
                     <input type="radio" name="admin" value="Admin" onChange={(e) => setAdmin(e.target.value)} />
                     Admin
                 </Label>
-                <button type='submit' className="btn btn-primary" onClick={registrarse}>Registrarse</button>
+                <button type='submit' className="btn btn-primary w-100">Registrarse</button>
+
             </form>
             <ToastContainer position="bottom-right" />
         </div>

@@ -19,6 +19,13 @@ function Login() {
   const loguearse = (e) => {
     e.preventDefault();
 
+     const form = e.target;
+  if (!form.checkValidity()) {
+    // Forzá que el navegador muestre los errores
+    form.reportValidity();
+    return;
+  }
+
     try {
 
       let user = servicio.autenticar(email, password);
@@ -42,11 +49,11 @@ function Login() {
 
   return (
     <div className='container'>
-      <form>
+      <form onSubmit={loguearse}>
         <div className='campo'>
           <Label>Email:</Label>
           <input
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -61,8 +68,8 @@ function Login() {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary" onClick={loguearse}>Iniciar sesión</button>
-        <button type="button" className="btn btn-secondary" onClick={registrarse}>Registrarse</button>
+        <button type="submit" className="btn btn-primary w-100">Iniciar sesión</button>
+        <button type="button" className="btn btn-secondary w-100" onClick={registrarse}>Registrarse</button>
         <ToastContainer position="bottom-right" />
       </form>
 

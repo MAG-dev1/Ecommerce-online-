@@ -8,7 +8,7 @@
   filter: brightness(0) invert(1);
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
     input{
         width: 100%;
         padding: 0.5rem;
@@ -26,4 +26,6 @@
     .button-navbar {
         width: 100%;
     }
+
+    
 }

@@ -9,6 +9,8 @@
     max-width: 50%;
     height: 250px;
     border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid #000000;
 }
 
 .detailed-view h2 {

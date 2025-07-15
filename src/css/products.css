@@ -29,7 +29,7 @@ h2 {
   align-items: center;
   align-content: center;
   transition: 0.3s;
-   border: 2px solid black;
+  border: 2px solid black;
 }
 
 .card:hover {
@@ -99,3 +99,14 @@ ul li {
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
+@media screen and (max-width: 768px) {
+  .contenedor_carrito {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .contenedor_carrito {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

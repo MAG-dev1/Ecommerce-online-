@@ -31,3 +31,24 @@
     border-radius: 5%;
     border: solid ;
 }
+
+@media screen and (max-width: 768px) {
+    .managment_container {
+        flex-direction: column;
+    }
+    .managment_container_buttons {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .imagen_gestion {
+       
+        justify-content: center;
+        align-items: center;
+    }
+  
+    .managment_container_buttons button {
+        width: 100%;
+    }
+
+}

@@ -9,7 +9,7 @@
   align-items: center;
   text-align: center;
     justify-self: center;
-  border-radius: 5cap;
+  border-radius: 5px;
  border: 2px solid black;
  padding: 3%;
 }
@@ -47,4 +47,34 @@
 
 .product_cart_individual:hover {
   transform: scale(1.03);
+}
+
+button{
+  background-color: #941818;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: darken(#941818, 10%);
+  }
+  justify-self: center;
+}
+
+@media (max-width: 600px) {
+  .products_cart{
+    width: 100%;
+    height: auto;
+     border-radius: 0;
+  }
+  .product_cart_individual {
+    padding: 10px;
+    /* Ajusta tamaño de imagen, texto o margen si hace falta */
+  }
+  .product_cart_individual img {
+
+   display:none;
+  }
 }

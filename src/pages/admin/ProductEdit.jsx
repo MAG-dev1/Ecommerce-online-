@@ -3,6 +3,10 @@ import Navbar from "../../components/Navbar";
 import { ProductService } from '../../core/ProductService'
 import '../../css/editProduct.css';
 import { Product } from "../../core/Product";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { ButtonForm } from '../../styledComponents/StyledComponents.js';
 
 export default function ProductEdit() {
     const [id, setId] = useState('');
@@ -15,16 +19,24 @@ export default function ProductEdit() {
 
     const buttonEditHandler = (e) => {
         e.preventDefault();
-        let product = new Product(seller, precio, titulo, imagen, descripcion);
-        service.put(id, JSON.stringify(product));
+
+        try {
+            let product = new Product(seller, precio, titulo, imagen, descripcion);
+         service.put(id, JSON.stringify(product))
+        } catch (error) {
+            toast.error('Error al editar el producto: ' + error.message);
+            return;
+        }
+     
+          
     }
 
     return (
         <>
 
             <Navbar />
-            <form className="form_delete">
-                <div className="container_delete">
+            <form className="form_edit">
+                <div className="container_edit">
 
                     <label>Editar Producto</label>
                     <input
@@ -41,6 +53,7 @@ export default function ProductEdit() {
                         value={seller}
                         onChange={(e) => setSeller(e.target.value)}
                         required
+                        placeholder="Nombre del vendedor"
                     />
 
                     <label>Precio:</label>
@@ -49,6 +62,7 @@ export default function ProductEdit() {
                         value={precio}
                         onChange={(e) => setPrecio(e.target.value)}
                         required
+                        placeholder="Precio del producto"
                     />
 
                     <label>Título:</label>
@@ -57,6 +71,7 @@ export default function ProductEdit() {
                         value={titulo}
                         onChange={(e) => setTitulo(e.target.value)}
                         required
+                        placeholder="Título del producto"
                     />
 
                     <label>Imagen (URL):</label>
@@ -65,6 +80,7 @@ export default function ProductEdit() {
                         value={imagen}
                         onChange={(e) => setImagen(e.target.value)}
                         required
+                        placeholder="URL de la imagen"
                     />
 
                     <label>Descripción:</label>
@@ -72,13 +88,17 @@ export default function ProductEdit() {
                         value={descripcion}
                         onChange={(e) => setDescripcion(e.target.value)}
                         required
+                        placeholder="Descripción del producto"
+                        rows="4"
                     />
 
-                    <button onClick={buttonEditHandler}><p>Submit</p></button>
+                    <ButtonForm onClick={buttonEditHandler}>Editar Producto</ButtonForm>
 
 
                 </div>
             </form>
+             <ToastContainer position="bottom-right" />
+            
         </>
     );
 }

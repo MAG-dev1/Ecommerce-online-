@@ -6,10 +6,10 @@ export class Product {
     #image;
     #description;
 
-    constructor(id, seller, price, titulo, image, description) {
+    constructor(seller, price, titulo, image, description) {
 
         this.validate(seller, price, titulo, image, description); //validar IREP
-     
+
         this.#seller = seller;
         this.#price = price;
         this.#title = titulo;
@@ -23,9 +23,7 @@ export class Product {
             throw new Error('El vendedor es obligatorio');
         }
 
-        if (price === undefined || price === null || isNaN(price) || price <= 0) {
-            throw new Error('El precio debe ser un número mayor a 0');
-        }
+        this.validatePrice(price);
 
         if (!titulo || titulo.trim() === '') {
             throw new Error('El título es obligatorio');
@@ -40,7 +38,22 @@ export class Product {
         }
     }
 
-    title(){
+    validatePrice(price) {
+        
+        let priceType = parseFloat(price);
+
+        if (isNaN(priceType)) {
+            throw new Error('El precio debe ser un número válido');
+        }
+        if (!isFinite(priceType)) {
+            throw new Error('El precio debe ser un número finito');
+        }
+        if (priceType <= 0) {
+            throw new Error('El precio debe ser un número mayor a 0');
+        }
+    }
+
+    title() {
         return this.#title;
     }
 
