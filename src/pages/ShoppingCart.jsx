@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar.jsx';
 import { UserContext } from '../context/UserContext.jsx';
 import { useContext, useEffect } from 'react';
 import { useCarrito } from '../context/CarritoContext.jsx';
-import '../css/ShoppingCart.css'
+import '../css/shoppingCart.css'
 
 function ShoppingCart() {
   const { user } = useContext(UserContext);
