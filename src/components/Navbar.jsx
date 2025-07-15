@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext.jsx';
 import { useCarrito } from '../context/CarritoContext.jsx';
-import SearchBar from './Searchbar.jsx';
+import SearchBar from './SearchBar.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
