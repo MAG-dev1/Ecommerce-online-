@@ -8,13 +8,7 @@ import '../css/shoppingCart.css'
 function ShoppingCart() {
   const { user } = useContext(UserContext);
   const {carrito} = useCarrito();
-  const isAuth = localStorage.getItem('auth') === 'true';
-
-  if (!isAuth) return <Navigate to="/login" />;
-
-  useEffect(() => {
-
-  }, []);
+ 
   if (!user) return <Navigate to="/login" />;
   return (
     <div>
